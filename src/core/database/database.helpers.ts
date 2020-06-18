@@ -112,7 +112,7 @@ export const upsertSubdocumentInArray = async <Model extends { _id: string }>(
       }
     : { _id: documentId };
 
-  const update = editMode
+  const update: any = editMode
     ? buildUpdateArrayQuery(subdocumentKey, newEntity)
     : { $push: { [subdocumentKey]: newEntity } };
 
