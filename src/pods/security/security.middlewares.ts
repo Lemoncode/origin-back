@@ -14,7 +14,7 @@ export const getAuthAdminUser = async (req: Request) => {
 export const getAuthEmployeeUser = async (req: Request) => {
   const token =
     extractAuthTokenFromCookies(req) || extractAuthTokenFromHeaders(req);
-  return getUser(token, process.env.STUDENT_AUTH_SECRET);
+  return getUser(token, process.env.EMPLOYEE_AUTH_SECRET);
 };
 
 const getUser = (token: string, secret: string) =>
