@@ -14,7 +14,7 @@ export interface GraphqlContextUser {
   module: Module;
 }
 
-interface Context {
+export interface Context {
   req: Request;
   res: Response;
   user: GraphqlContextUser;

@@ -1,6 +1,6 @@
 import { UserProfile } from '../security.api-model';
 
-interface MockUserProfile extends UserProfile {
+export interface MockUserProfile extends UserProfile {
   user: string;
   password: string;
 }
