@@ -8,6 +8,7 @@ export const adminTypeDefs = gql`
 
   extend type Query {
     employees: [Employee!]!
+    employee(id: ID!): Employee!
   }
 
   extend type Mutation {

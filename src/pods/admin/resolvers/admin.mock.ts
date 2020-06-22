@@ -17,6 +17,9 @@ export const mockResolvers: AdminResolver = {
     employees: async (parent, args, context) => {
       return db.employees;
     },
+    employee: async (parent, { id }, context) => {
+      return db.employees.find((e) => e.id === id);
+    },
   },
   Mutation: {
     deleteEmployee: async (parent, { id }) => {

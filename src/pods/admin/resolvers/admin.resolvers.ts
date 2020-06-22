@@ -8,6 +8,10 @@ export const resolvers: AdminResolver = {
       authorizeToUser(context.user, 'admin');
       return null;
     },
+    employee: async (parent, args, context) => {
+      authorizeToUser(context.user, 'admin');
+      return null;
+    },
   },
   Mutation: {
     deleteEmployee: async (parent, args, context) => {
