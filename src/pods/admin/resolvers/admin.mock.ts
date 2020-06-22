@@ -15,7 +15,6 @@ let db: DB = {
 export const mockResolvers: AdminResolver = {
   Query: {
     employees: async (parent, args, context) => {
-      authorizeToUser(context.user, 'admin');
       return db.employees;
     },
   },
