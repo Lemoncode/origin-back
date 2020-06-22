@@ -29,5 +29,35 @@ export const mockResolvers: AdminResolver = {
       };
       return true;
     },
+    saveEmployee: async (parent, { employee }) => {
+      const existEmployee = db.employees.some((e) => e.id === employee.id);
+
+      return existEmployee
+        ? updateEmployee(employee)
+        : insertEmployee(employee);
+    },
   },
+};
+
+const updateEmployee = (employee: Employee) => {
+  db = {
+    ...db,
+    employees: db.employees.map((e) =>
+      e.id === employee.id ? { ...employee } : e
+    ),
+  };
+
+  return employee;
+};
+
+const insertEmployee = (employee: Employee) => {
+  const lastIndex = db.employees.length - 1;
+  const lastId = Number(db.employees[lastIndex].id);
+  const newEmployee = { ...employee, id: (lastId + 1).toString() };
+  db = {
+    ...db,
+    employees: [...db.employees, newEmployee],
+  };
+
+  return newEmployee;
 };

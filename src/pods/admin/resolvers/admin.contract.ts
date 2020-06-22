@@ -9,5 +9,6 @@ export interface AdminResolver {
 
   Mutation: {
     deleteEmployee: GraphQLResolver<boolean, { id: string }>;
+    saveEmployee: GraphQLResolver<Employee, {employee: Employee}>;
   };
 }
