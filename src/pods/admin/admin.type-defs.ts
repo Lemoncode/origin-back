@@ -4,6 +4,9 @@ export const adminTypeDefs = gql`
   type Employee {
     id: ID!
     name: String!
+    isActive: Boolean!
+    email: String!
+    lastDateIncurred: String!
   }
 
   extend type Query {
@@ -14,6 +17,10 @@ export const adminTypeDefs = gql`
   input EmployeeInput {
     id: ID
     name: String!
+    isActive: Boolean!
+    email: String!
+    lastDateIncurred: String
+    temporalPassword: String!
   }
 
   extend type Mutation {
