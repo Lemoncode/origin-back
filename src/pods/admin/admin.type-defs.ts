@@ -9,4 +9,8 @@ export const adminTypeDefs = gql`
   extend type Query {
     employees: [Employee!]!
   }
+
+  extend type Mutation {
+    deleteEmployee(id: ID!): Boolean!
+  }
 `;

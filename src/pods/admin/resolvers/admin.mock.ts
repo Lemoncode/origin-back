@@ -18,4 +18,13 @@ export const mockResolvers: AdminResolver = {
       return db.employees;
     },
   },
+  Mutation: {
+    deleteEmployee: async (parent, { id }) => {
+      db = {
+        ...db,
+        employees: db.employees.filter((e) => e.id !== id),
+      };
+      return true;
+    },
+  },
 };

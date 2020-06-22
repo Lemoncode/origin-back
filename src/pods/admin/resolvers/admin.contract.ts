@@ -5,4 +5,8 @@ export interface AdminResolver {
   Query: {
     employees: GraphQLResolver<Employee[]>;
   };
+
+  Mutation: {
+    deleteEmployee: GraphQLResolver<boolean, { id: string }>;
+  };
 }
