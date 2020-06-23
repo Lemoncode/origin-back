@@ -53,7 +53,14 @@ const updateEmployee = (employee: Employee) => {
 const insertEmployee = (employee: Employee) => {
   const lastIndex = db.employees.length - 1;
   const lastId = Number(db.employees[lastIndex].id);
-  const newEmployee = { ...employee, id: (lastId + 1).toString() };
+  const currentDate = new Date();
+  const lastDateIncurred = `${currentDate.getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`;
+
+  const newEmployee = {
+    ...employee,
+    id: (lastId + 1).toString(),
+    lastDateIncurred,
+  };
   db = {
     ...db,
     employees: [...db.employees, newEmployee],
