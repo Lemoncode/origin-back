@@ -36,6 +36,28 @@ export const mockResolvers: AdminResolver = {
         ? updateEmployee(employee)
         : insertEmployee(employee);
     },
+    saveProjectSummaryList: async (parent, { id, projectSummaryList }) => {
+      const currentEmployee = db.employees.find((e) => e.id === id);
+      const projectIds = projectSummaryList.map((psl) => psl.id);
+      const projects = db.employees.filter((e) =>
+        projectIds.some((id) => id.includes(e.id))
+      );
+
+      const mappedProjectSummaryList = projectSummaryList.map((psl) => ({
+        id: psl.id,
+        isAssigned: psl.isAssigned,
+        projectName: psl.projectName,
+      }));
+
+      const employee: Employee = {
+        ...currentEmployee,
+        projects: mappedProjectSummaryList,
+      };
+
+      updateEmployee(employee);
+
+      return mappedProjectSummaryList;
+    },
   },
 };
 

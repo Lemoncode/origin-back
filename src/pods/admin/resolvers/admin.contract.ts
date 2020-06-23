@@ -1,5 +1,5 @@
 import { GraphQLResolver } from 'common/models';
-import { Employee } from '../admin.api-model';
+import { Employee, ProjectSummary } from '../admin.api-model';
 
 export interface AdminResolver {
   Query: {
@@ -9,6 +9,10 @@ export interface AdminResolver {
 
   Mutation: {
     deleteEmployee: GraphQLResolver<boolean, { id: string }>;
-    saveEmployee: GraphQLResolver<Employee, {employee: Employee}>;
+    saveEmployee: GraphQLResolver<Employee, { employee: Employee }>;
+    saveProjectSummaryList: GraphQLResolver<
+      ProjectSummary[],
+      { id: string; projectSummaryList: ProjectSummary[] }
+    >;
   };
 }

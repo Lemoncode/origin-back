@@ -40,5 +40,9 @@ export const adminTypeDefs = gql`
   extend type Mutation {
     deleteEmployee(id: ID!): Boolean!
     saveEmployee(employee: EmployeeInput!): Employee!
+    saveProjectSummaryList(
+      id: ID!
+      projectSummaryList: [ProjectSummaryInput!]!
+    ): [ProjectSummary!]!
   }
 `;
