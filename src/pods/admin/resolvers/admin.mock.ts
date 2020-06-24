@@ -69,7 +69,7 @@ const updateEmployee = (employee: Employee) => {
   db = {
     ...db,
     employees: db.employees.map((e) =>
-      e.id === employee.id ? { ...employee } : e
+      e.id === employee.id ? { ...e, ...employee } : e
     ),
   };
 
@@ -79,13 +79,10 @@ const updateEmployee = (employee: Employee) => {
 const insertEmployee = (employee: Employee) => {
   const lastIndex = db.employees.length - 1;
   const lastId = Number(db.employees[lastIndex].id);
-  const currentDate = new Date();
-  const lastDateIncurred = `${currentDate.getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`;
 
   const newEmployee = {
     ...employee,
     id: (lastId + 1).toString(),
-    lastDateIncurred,
   };
   db = {
     ...db,

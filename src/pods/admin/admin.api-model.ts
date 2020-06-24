@@ -3,7 +3,7 @@ export interface Employee {
   isActive: boolean;
   name: string;
   email: string;
-  lastDateIncurred: string;
+  lastDateIncurred?: string;
   temporalPassword?: string;
   projects?: EmployeeProject[];
 }

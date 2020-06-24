@@ -6,7 +6,7 @@ export const adminTypeDefs = gql`
     name: String!
     isActive: Boolean!
     email: String!
-    lastDateIncurred: String!
+    lastDateIncurred: String
     projects: [EmployeeProject!]
   }
 
@@ -18,7 +18,6 @@ export const adminTypeDefs = gql`
   type Project {
     id: ID!
     name: String!
-    isActive: Boolean
   }
 
   extend type Query {
@@ -39,7 +38,6 @@ export const adminTypeDefs = gql`
     email: String!
     lastDateIncurred: String
     temporalPassword: String
-    projects: [EmployeeProjectInput!]
   }
 
   extend type Mutation {
