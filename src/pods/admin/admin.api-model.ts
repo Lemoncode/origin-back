@@ -5,11 +5,16 @@ export interface Employee {
   email: string;
   lastDateIncurred: string;
   temporalPassword?: string;
-  projects?: ProjectSummary[];
+  projects?: EmployeeProject[];
 }
 
-export interface ProjectSummary {
+export interface EmployeeProject {
   id: string;
   isAssigned?: boolean;
-  projectName: string;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  isActive: boolean;
 }

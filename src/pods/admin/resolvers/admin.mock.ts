@@ -1,15 +1,17 @@
 import { ForbiddenError } from 'apollo-server-express';
 import { AdminResolver } from './admin.contract';
-import { mockEmployees } from './admin.mock-data';
-import { Employee } from '../admin.api-model';
+import { mockEmployees, mockProjects } from './admin.mock-data';
+import { Employee, Project } from '../admin.api-model';
 import { authorizeToUser } from 'pods/security';
 
 interface DB {
   employees: Employee[];
+  projects: Project[];
 }
 
 let db: DB = {
   employees: [...mockEmployees],
+  projects: [...mockProjects],
 };
 
 export const mockResolvers: AdminResolver = {
@@ -19,6 +21,9 @@ export const mockResolvers: AdminResolver = {
     },
     employee: async (parent, { id }, context) => {
       return db.employees.find((e) => e.id === id);
+    },
+    projects: async (parent, args, context) => {
+      return db.projects;
     },
   },
   Mutation: {
@@ -36,27 +41,26 @@ export const mockResolvers: AdminResolver = {
         ? updateEmployee(employee)
         : insertEmployee(employee);
     },
-    saveProjectSummaryList: async (parent, { id, projectSummaryList }) => {
+    saveEmployeeProjectList: async (parent, { id, employeeProjectList }) => {
       const currentEmployee = db.employees.find((e) => e.id === id);
-      const projectIds = projectSummaryList.map((psl) => psl.id);
+      const projectIds = employeeProjectList.map((psl) => psl.id);
       const projects = db.employees.filter((e) =>
         projectIds.some((id) => id.includes(e.id))
       );
 
-      const mappedProjectSummaryList = projectSummaryList.map((psl) => ({
+      const mappedEmployeeProjectList = employeeProjectList.map((psl) => ({
         id: psl.id,
         isAssigned: psl.isAssigned,
-        projectName: psl.projectName,
       }));
 
       const employee: Employee = {
         ...currentEmployee,
-        projects: mappedProjectSummaryList,
+        projects: mappedEmployeeProjectList,
       };
 
       updateEmployee(employee);
 
-      return mappedProjectSummaryList;
+      return mappedEmployeeProjectList;
     },
   },
 };

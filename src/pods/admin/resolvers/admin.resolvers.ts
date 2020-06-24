@@ -12,6 +12,10 @@ export const resolvers: AdminResolver = {
       authorizeToUser(context.user, 'admin');
       return null;
     },
+    projects: async (parent, args, context) => {
+      authorizeToUser(context.user, 'admin');
+      return null;
+    },
   },
   Mutation: {
     deleteEmployee: async (parent, args, context) => {
@@ -22,7 +26,7 @@ export const resolvers: AdminResolver = {
       authorizeToUser(context.user, 'admin');
       return null;
     },
-    saveProjectSummaryList: async (parent, args, context) => {
+    saveEmployeeProjectList: async (parent, args, context) => {
       authorizeToUser(context.user, 'admin');
       return null;
     },

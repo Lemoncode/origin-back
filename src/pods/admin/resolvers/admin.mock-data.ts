@@ -1,25 +1,44 @@
-import { Employee, ProjectSummary } from '../admin.api-model';
+import { Employee, EmployeeProject, Project } from '../admin.api-model';
 
-const mockProjectSummaryList: ProjectSummary[] = [
+const mockEmployeeProjectList: EmployeeProject[] = [
   {
     id: '1',
     isAssigned: true,
-    projectName: 'Mapfre',
   },
   {
     id: '2',
     isAssigned: false,
-    projectName: 'Bankia',
   },
   {
     id: '3',
     isAssigned: false,
-    projectName: 'Vacaciones',
   },
   {
     id: '4',
     isAssigned: true,
-    projectName: 'Baja',
+  },
+];
+
+export const mockProjects: Project[] = [
+  {
+    id: '1',
+    isActive: true,
+    name: 'Bankia',
+  },
+  {
+    id: '2',
+    isActive: true,
+    name: 'Mapfre',
+  },
+  {
+    id: '3',
+    isActive: true,
+    name: 'Vacaciones',
+  },
+  {
+    id: '4',
+    isActive: true,
+    name: 'Baja Médica',
   },
 ];
 
@@ -31,7 +50,7 @@ export const mockEmployees: Employee[] = [
     email: 'daniel.perez@empresa.com',
     lastDateIncurred: '02/02/2020',
     temporalPassword: 'test',
-    projects: mockProjectSummaryList,
+    projects: mockEmployeeProjectList,
   },
   {
     id: '2',
@@ -40,7 +59,7 @@ export const mockEmployees: Employee[] = [
     email: 'jose.gomez@empresa.com',
     lastDateIncurred: '05/02/2020',
     temporalPassword: 'test',
-    projects: mockProjectSummaryList,
+    projects: mockEmployeeProjectList,
   },
   {
     id: '3',
@@ -49,7 +68,7 @@ export const mockEmployees: Employee[] = [
     email: 'manuel.ruiz@empresa.com',
     lastDateIncurred: '06/02/2020',
     temporalPassword: 'test',
-    projects: mockProjectSummaryList,
+    projects: mockEmployeeProjectList,
   },
   {
     id: '4',
@@ -58,7 +77,7 @@ export const mockEmployees: Employee[] = [
     email: 'ramon.gomez@empresa.com',
     lastDateIncurred: '02/05/2020',
     temporalPassword: 'test',
-    projects: mockProjectSummaryList,
+    projects: mockEmployeeProjectList,
   },
   {
     id: '5',
@@ -67,7 +86,7 @@ export const mockEmployees: Employee[] = [
     email: 'maria.lopez@empresa.com',
     lastDateIncurred: '05/08/2020',
     temporalPassword: 'test',
-    projects: mockProjectSummaryList,
+    projects: mockEmployeeProjectList,
   },
   {
     id: '6',
@@ -76,7 +95,7 @@ export const mockEmployees: Employee[] = [
     email: 'manuel.ortiz@empresa.com',
     lastDateIncurred: '06/06/2020',
     temporalPassword: 'test',
-    projects: mockProjectSummaryList,
+    projects: mockEmployeeProjectList,
   },
   {
     id: '7',
@@ -85,7 +104,7 @@ export const mockEmployees: Employee[] = [
     email: 'david.martos@empresa.com',
     lastDateIncurred: '14/08/2020',
     temporalPassword: 'test',
-    projects: mockProjectSummaryList,
+    projects: mockEmployeeProjectList,
   },
   {
     id: '8',
@@ -94,6 +113,6 @@ export const mockEmployees: Employee[] = [
     email: 'luz.roca@empresa.com',
     lastDateIncurred: '20/06/2020',
     temporalPassword: 'test',
-    projects: mockProjectSummaryList,
+    projects: mockEmployeeProjectList,
   },
 ];
