@@ -53,6 +53,23 @@ export const mockResolvers: AdminResolver = {
 
       return employeeProjectList;
     },
+    saveProject: async (parent, { project }) => {
+      const existProject = db.employees.some((e) => e.id === project.id);
+
+      return existProject ? updateProject(project) : insertProject(project);
+    },
+    saveProjectEmployeeList: async (parent, { id, projectEmployeeList }) => {
+      const currentProject = db.projects.find((p) => p.id === id);
+
+      const project: Project = {
+        ...currentProject,
+        employees: projectEmployeeList,
+      };
+
+      updateProject(project);
+
+      return projectEmployeeList;
+    },
   },
 };
 
@@ -65,6 +82,17 @@ const updateEmployee = (employee: Employee) => {
   };
 
   return employee;
+};
+
+const updateProject = (project: Project) => {
+  db = {
+    ...db,
+    projects: db.projects.map((p) =>
+      p.id === project.id ? { ...p, ...project } : p
+    ),
+  };
+
+  return project;
 };
 
 const insertEmployee = (employee: Employee) => {
@@ -81,4 +109,20 @@ const insertEmployee = (employee: Employee) => {
   };
 
   return newEmployee;
+};
+
+const insertProject = (project: Project) => {
+  const lastIndex = db.projects.length - 1;
+  const lastId = Number(db.projects[lastIndex].id);
+
+  const newProject = {
+    ...project,
+    id: (lastId + 1).toString(),
+  };
+  db = {
+    ...db,
+    projects: [...db.projects, newProject],
+  };
+
+  return newProject;
 };

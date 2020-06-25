@@ -30,5 +30,13 @@ export const resolvers: AdminResolver = {
       authorizeToUser(context.user, 'admin');
       return null;
     },
+    saveProject: async (parent, args, context) => {
+      authorizeToUser(context.user, 'admin');
+      return null;
+    },
+    saveProjectEmployeeList: async (parent, args, context) => {
+      authorizeToUser(context.user, 'admin');
+      return null;
+    },
   },
 };

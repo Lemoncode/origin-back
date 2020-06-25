@@ -18,12 +18,25 @@ export const adminTypeDefs = gql`
   type Project {
     id: ID!
     name: String!
+    code: String!
+    externalId: String
+    comments: String
+    isActive: Boolean!
+    lastDateIncurred: String
+    creationDate: String!
+    employees: [ProjectEmployee!]
+  }
+
+  type ProjectEmployee {
+    id: ID!
+    isAssigned: Boolean!
   }
 
   extend type Query {
     employees: [Employee!]!
     employee(id: ID!): Employee!
     projects: [Project!]!
+    project(id: ID!): Project!
   }
 
   input EmployeeProjectInput {
@@ -40,6 +53,19 @@ export const adminTypeDefs = gql`
     temporalPassword: String
   }
 
+  input ProjectInput {
+    id: ID
+    name: String!
+    externalId: String
+    comments: String
+    isActive: Boolean
+  }
+
+  input ProjectEmployeeInput {
+    id: ID!
+    isAssigned: Boolean!
+  }
+
   extend type Mutation {
     deleteEmployee(id: ID!): Boolean!
     saveEmployee(employee: EmployeeInput!): Employee!
@@ -47,5 +73,10 @@ export const adminTypeDefs = gql`
       id: ID!
       employeeProjectList: [EmployeeProjectInput!]!
     ): [EmployeeProject!]!
+    saveProject(project: ProjectInput!): Project!
+    saveProjectEmployeeList(
+      id: ID!
+      projectEmployeeList: [ProjectEmployeeInput!]!
+    ): [ProjectEmployee!]!
   }
 `;

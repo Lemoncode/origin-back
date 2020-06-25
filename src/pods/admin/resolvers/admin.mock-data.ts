@@ -1,6 +1,30 @@
-import { Employee, EmployeeProject, Project } from '../admin.api-model';
+import {
+  Employee,
+  EmployeeProject,
+  Project,
+  ProjectEmployee,
+} from '../admin.api-model';
 
 const mockEmployeeProjectList: EmployeeProject[] = [
+  {
+    id: '1',
+    isAssigned: true,
+  },
+  {
+    id: '2',
+    isAssigned: false,
+  },
+  {
+    id: '3',
+    isAssigned: false,
+  },
+  {
+    id: '4',
+    isAssigned: true,
+  },
+];
+
+const mockProjectEmployeeList: ProjectEmployee[] = [
   {
     id: '1',
     isAssigned: true,
@@ -23,22 +47,90 @@ export const mockProjects: Project[] = [
   {
     id: '1',
     isActive: true,
+    code: '23212',
     name: 'Bankia',
+    lastDateIncurred: '02/02/2020',
+    creationDate: '01/08/2018',
+    comments: 'Comentario para el projecto Bankia',
+    externalId: '1234',
+    employees: mockProjectEmployeeList,
   },
   {
     id: '2',
     isActive: true,
+    code: '4323',
     name: 'Mapfre',
+    lastDateIncurred: '05/02/2020',
+    creationDate: '01/04/2018',
+    comments: 'Comentario para el projecto Mapfre',
+    externalId: '1234',
+    employees: mockProjectEmployeeList,
   },
   {
     id: '3',
     isActive: true,
+    code: '002',
     name: 'Vacaciones',
+    lastDateIncurred: '05/02/2020',
+    creationDate: '01/04/2018',
+    comments: 'Comentario para el projecto Vacaciones',
+    externalId: '1234',
+    employees: mockProjectEmployeeList,
   },
   {
     id: '4',
     isActive: true,
+    code: '003',
     name: 'Baja Médica',
+    lastDateIncurred: '05/03/2018',
+    creationDate: '01/05/2019',
+    comments: 'Comentario para el projecto Baja Médica',
+    externalId: '1234',
+    employees: mockProjectEmployeeList,
+  },
+  {
+    id: '5',
+    isActive: false,
+    code: '2586',
+    name: 'Proyecto interno',
+    lastDateIncurred: '05/08/2020',
+    creationDate: '01/10/2018',
+    comments: 'Comentario para el projecto Proyecto interno',
+    externalId: '1234',
+    employees: mockProjectEmployeeList,
+  },
+  {
+    id: '6',
+    isActive: false,
+    code: '3025',
+    name: 'BBVA',
+    lastDateIncurred: '06/05/2020',
+    creationDate: '01/03/2019',
+    comments: 'Comentario para el projecto BBVA',
+    externalId: '1234',
+    employees: mockProjectEmployeeList,
+  },
+  {
+    id: '7',
+    isActive: false,
+    code: '8563',
+    name: 'Baja Médica',
+    lastDateIncurred: '02/08/2018',
+    creationDate: '01/11/2020',
+    comments: 'Comentario para el projecto Baja Médica',
+    externalId: '1234',
+    employees: mockProjectEmployeeList,
+  },
+  {
+    id: '8',
+    isActive: true,
+    code: '4125',
+    name: 'Microsoft España',
+    lastDateIncurred: '11/10/2018',
+    creationDate: '01/07/2020',
+    comments: 'Comentario para el projecto Microsoft España',
+    externalId: '1234',
+    employees: mockProjectEmployeeList,
   },
 ];
 
