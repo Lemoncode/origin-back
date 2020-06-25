@@ -25,6 +25,9 @@ export const mockResolvers: AdminResolver = {
     projects: async (parent, args, context) => {
       return db.projects;
     },
+    project: async (parent, { id }, context) => {
+      return db.projects.find((e) => e.id === id);
+    },
   },
   Mutation: {
     deleteEmployee: async (parent, { id }) => {
@@ -52,6 +55,13 @@ export const mockResolvers: AdminResolver = {
       updateEmployee(employee);
 
       return employeeProjectList;
+    },
+    deleteProject: async (parent, { id }) => {
+      db = {
+        ...db,
+        projects: db.projects.filter((p) => p.id !== id),
+      };
+      return true;
     },
     saveProject: async (parent, { project }) => {
       const existProject = db.employees.some((e) => e.id === project.id);

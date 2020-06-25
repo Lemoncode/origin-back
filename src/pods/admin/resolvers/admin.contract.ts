@@ -11,6 +11,7 @@ export interface AdminResolver {
     employees: GraphQLResolver<Employee[]>;
     employee: GraphQLResolver<Employee, { id: string }>;
     projects: GraphQLResolver<Project[]>;
+    project: GraphQLResolver<Project, { id: string }>;
   };
 
   Mutation: {
@@ -20,6 +21,7 @@ export interface AdminResolver {
       EmployeeProject[],
       { id: string; employeeProjectList: EmployeeProject[] }
     >;
+    deleteProject: GraphQLResolver<boolean, { id: string }>;
     saveProject: GraphQLResolver<Project, { project: Project }>;
     saveProjectEmployeeList: GraphQLResolver<
       ProjectEmployee[],

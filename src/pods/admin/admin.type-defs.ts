@@ -73,6 +73,7 @@ export const adminTypeDefs = gql`
       id: ID!
       employeeProjectList: [EmployeeProjectInput!]!
     ): [EmployeeProject!]!
+    deleteProject(id: ID!): Boolean!
     saveProject(project: ProjectInput!): Project!
     saveProjectEmployeeList(
       id: ID!
