@@ -22,6 +22,22 @@ const mockEmployeeProjectList: EmployeeProject[] = [
     id: '4',
     isAssigned: true,
   },
+  {
+    id: '5',
+    isAssigned: true,
+  },
+  {
+    id: '6',
+    isAssigned: false,
+  },
+  {
+    id: '7',
+    isAssigned: false,
+  },
+  {
+    id: '8',
+    isAssigned: true,
+  },
 ];
 
 const mockProjectEmployeeList: ProjectEmployee[] = [

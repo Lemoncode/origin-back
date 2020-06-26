@@ -124,10 +124,13 @@ const insertEmployee = (employee: Employee) => {
 const insertProject = (project: Project) => {
   const lastIndex = db.projects.length - 1;
   const lastId = Number(db.projects[lastIndex].id);
+  const currentDate = new Date();
 
   const newProject = {
     ...project,
     id: (lastId + 1).toString(),
+    code: '1234',
+    creationDate: `${currentDate.getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`,
   };
   db = {
     ...db,
